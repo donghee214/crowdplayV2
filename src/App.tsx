@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
+import Firestore from './server/Firestore';
 import logo from './logo.svg';
 import './App.css';
 
+
+
 class App extends Component {
-  render() {
+
+  render() { 
+    Firestore.collection("users-test").add({name:"Justy Wusty", phoneNumber: "647-911-9111"})
+  .then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+    console.error("Error adding document: ", error);
+  });
     return (
       <div className="App">
         <header className="App-header">
