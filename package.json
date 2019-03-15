@@ -6,7 +6,8 @@
     "firebase": "^5.8.6",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "shared": "./src/shared"
   },
   "scripts": {
     "start": "react-scripts start",
