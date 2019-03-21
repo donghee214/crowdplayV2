@@ -8,7 +8,7 @@ module.exports = {
           assets: "./src/assets",
           features: "./src/features",
           data: "./src/data",
-          shared: "./src/shared",
+          shared: "./src/js/shared",
           utils: "./src/utils",
           vendor: "./src/vendor",
           root: "./src"
