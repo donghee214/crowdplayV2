@@ -14,7 +14,7 @@ class App extends Component {
       });
     return (
       <div className="App">
-        <VoteButton />
+        <VoteButton active={true} />
       </div>
     );
   }
