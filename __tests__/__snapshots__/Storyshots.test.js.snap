@@ -1,46 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button with emoji 1`] = `
-<button
-  onClick={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#FFFFFF",
-      "border": "1px solid #eee",
-      "borderRadius": 3,
-      "cursor": "pointer",
-      "fontSize": 15,
-      "margin": 10,
-      "padding": "3px 10px",
-    }
-  }
-  type="button"
+exports[`Storyshots Shared/VoteButton Active 1`] = `
+<svg
+  className="voteButton"
+  height="24"
+  viewBox="0 0 24 24"
+  width="24"
 >
-  <span
-    aria-label="so cool"
-    role="img"
-  >
-    😀 😎 👍 💯
-  </span>
-</button>
-`;
-
-exports[`Storyshots Button with text 1`] = `
-<button
-  onClick={[Function]}
-  style={
-    Object {
-      "backgroundColor": "#FFFFFF",
-      "border": "1px solid #eee",
-      "borderRadius": 3,
-      "cursor": "pointer",
-      "fontSize": 15,
-      "margin": 10,
-      "padding": "3px 10px",
-    }
-  }
-  type="button"
->
-  Hello Button
-</button>
+  <path
+    d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+  />
+  <path
+    d="M0 0h24v24H0z"
+    fill="none"
+  />
+</svg>
 `;
