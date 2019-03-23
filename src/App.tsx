@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Firestore from "./server/Firestore";
-import { VoteButton } from "shared/components";
+import { VoteButton } from "./shared";
 
 class App extends Component {
   render() {

@@ -1,0 +1,21 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+/* Import Baseline styles */
+
+@import url("./shared/colours.css");
+
+/* Import JS Styles */
+
+@import url("./js/shared/components/VoteButton.css");
