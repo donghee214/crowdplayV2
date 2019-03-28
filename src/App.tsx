@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Firestore from "./server/Firestore";
-import { VoteButton } from "./shared";
+import { VoteButton } from "shared";
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
       });
     return (
       <div className="App">
-        <VoteButton active={true} />
+        <VoteButton active={true} clickHandler={() => console.log("dummy")} />
       </div>
     );
   }

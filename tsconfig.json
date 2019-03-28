@@ -14,7 +14,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "sourceMap": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "shared": ["src/shared"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", ".storybook"]
 }
