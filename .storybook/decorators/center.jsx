@@ -9,6 +9,4 @@ const centerStyle = {
   backgroundColor: "#333"
 };
 
-export default (storyFn: Function) => (
-  <div style={centerStyle}>{storyFn()}</div>
-);
+export default storyFn => <div style={centerStyle}>{storyFn()}</div>;

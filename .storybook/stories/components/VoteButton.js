@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 // import VoteButton from "shared/components/VoteButton";
 import VoteButton from "shared/components/VoteButton";
+
 export default class VoteButtonContainer extends PureComponent {
   state = {
     active: false

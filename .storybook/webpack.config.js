@@ -16,7 +16,7 @@ module.exports = async ({ config, mode }) => {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     alias: {
       ...config.resolve.alias,
-      shared: path.join(__dirname, "..", "src", "shared")
+      assets: path.resolve(__dirname, "../src/assets")
     }
   };
 

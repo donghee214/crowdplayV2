@@ -19,7 +19,8 @@
     "paths": {
       "shared": ["src/shared"],
       "assets/*": ["src/assets/*"]
-    }
+    },
+    "rootDirs": ["src"]
   },
-  "include": ["src", ".storybook"]
+  "include": ["src"]
 }
