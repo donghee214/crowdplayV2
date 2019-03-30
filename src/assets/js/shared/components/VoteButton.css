@@ -1,5 +1,192 @@
 .voteButton {
-  width: 200px;
-  background-color: var(--colour-green);
-  height: 200px;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+}
+
+.voteButton--active {
+  fill: var(--colour-green);
+}
+
+.voteButton--unactive {
+  fill: var(--colour-white);
+}
+
+.cbutton {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #286aab;
+  font-size: 1.4em;
+  transition: color 0.7s;
+}
+
+.cbutton.cbutton--click,
+.cbutton:focus {
+  outline: none;
+  color: #3c8ddc;
+}
+
+.cbutton::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -35px 0 0 -35px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.cbutton--effect-ivana::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -35px 0 0 -35px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* .cbutton--effect-ivana::before,
+.cbutton--effect-ivana::after {
+  box-shadow: 0 0 0 2px var(--colour-green);
+} */
+
+.cbutton--effect-ivana.cbutton--click::before {
+  -webkit-animation: anim-effect-ivana-1 0.5s forwards;
+  animation: anim-effect-ivana-1 0.5s forwards;
+  box-shadow: 0 0 0 2px var(--colour-green);
+}
+
+.cbutton--effect-ivana.cbutton--click::after {
+  -webkit-animation: anim-effect-ivana-2 0.5s forwards;
+  animation: anim-effect-ivana-2 0.5s forwards;
+  box-shadow: 0 0 0 2px var(--colour-green);
+}
+
+.cbutton--effect-ivana.cbutton--unclick::before {
+  -webkit-animation: anim-effect-ivana-1-reverse 0.5s forwards;
+  animation: anim-effect-ivana-1 0.5s-reverse forwards;
+  box-shadow: 0 0 0 2px var(--colour-white);
+}
+
+.cbutton--effect-ivana.cbutton--unclick::after {
+  -webkit-animation: anim-effect-ivana-2-reverse 0.5s forwards;
+  animation: anim-effect-ivana-2-reverse 0.5s forwards;
+  box-shadow: 0 0 0 2px var(--colour-white);
+}
+
+@-webkit-keyframes anim-effect-ivana-1 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes anim-effect-ivana-1 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@-webkit-keyframes anim-effect-ivana-2 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+@keyframes anim-effect-ivana-2 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+@-webkit-keyframes anim-effect-ivana-1-reverse {
+  0% {
+    opacity: 0.7;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+}
+
+@keyframes anim-effect-ivana-1-reverse {
+  0% {
+    opacity: 0.7;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+}
+
+@-webkit-keyframes anim-effect-ivana-2-reverse {
+  0% {
+    opacity: 0.7;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+}
+
+@keyframes anim-effect-ivana-2-reverse {
+  0% {
+    opacity: 0.7;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+  50%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
 }

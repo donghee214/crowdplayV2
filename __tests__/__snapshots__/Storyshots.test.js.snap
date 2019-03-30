@@ -1,18 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Shared/VoteButton Active 1`] = `
-<svg
-  className="voteButton"
-  height="24"
-  viewBox="0 0 24 24"
-  width="24"
+exports[`Storyshots Shared VoteButton 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#333",
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
+      "width": "100vw",
+    }
+  }
 >
-  <path
-    d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
-  />
-  <path
-    d="M0 0h24v24H0z"
-    fill="none"
-  />
-</svg>
+  <div
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="cbutton cbutton--effect-ivana "
+        onClick={[Function]}
+      >
+        <svg
+          className="voteButton voteButton--unactive"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <p>
+        Unactive
+      </p>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "0 2rem",
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="cbutton cbutton--effect-ivana "
+        onClick={[Function]}
+      >
+        <svg
+          className="voteButton voteButton--active"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <p>
+        Active
+      </p>
+    </div>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    >
+      <button
+        className="cbutton cbutton--effect-ivana "
+        onClick={[Function]}
+      >
+        <svg
+          className="voteButton voteButton--unactive"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <p>
+        Interactive
+      </p>
+    </div>
+  </div>
+</div>
 `;
