@@ -9,6 +9,7 @@
 /* Import JS Styles */
 
 @import url("./js/shared/components/VoteButton.css");
+@import url("./js/shared/components/");
 
 html {
   margin: 0;
