@@ -19,12 +19,12 @@
   .type--large-white {
     color: var(--colour-white);
     font-size: 42px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }  
 
   .type--large-green {
     color: var(--colour-green);
     font-size: 42px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 /* } */

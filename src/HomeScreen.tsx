@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
+import { VoteButton } from "shared";
 
 // TODO: smh think of a better name lol
-const BoxInput = ({title,iconClassname}) => (
-  <div className="home-screen__box-input">
+const BoxInput = ({title, iconClassname}: {title: string, iconClassname: string}) => (
+  <button className="btn home-screen__box-input" onClick={() => alert(title)}>
       <div className={iconClassname}/>
       <div className="type--large-white">{title}<span className="type--large-green">.</span></div> 
-    </div>
+    </button>
 );
 
 const HomeScreen = () => (
@@ -20,6 +21,8 @@ const HomeScreen = () => (
       <BoxInput title="Create" iconClassname="home-screen__create-room__icon"/>
       <BoxInput title="Join" iconClassname="home-screen__join-room__icon"/>
     </div>
+
+    <VoteButton active={true} clickHandler={() => console.log("dummy")} />
   </div>
 )
   

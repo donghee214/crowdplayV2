@@ -16,11 +16,11 @@ class App extends Component {
       });
     return (
       <div className="App">
-        <VoteButton active={true} clickHandler={() => console.log("dummy")} />
-        <HomeScreen />
+         <HomeScreen />
       </div>
     );
   }
 }
+
 
 export default App;

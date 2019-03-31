@@ -1,12 +1,10 @@
-/* Import Font Styles */
-
-@import url("./shared/fonts.css");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600");
 
 /* Import Baseline styles */
 
 @import url("./shared/colours.css");
-@import url("./shared//typography.css");
-
+@import url("./shared/typography.css");
+@import url("./shared/buttons.css");
 
 /* Import JS Styles */
 
@@ -17,6 +15,7 @@ html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  height: 100%;
   min-width: 100vw;
 }
 
