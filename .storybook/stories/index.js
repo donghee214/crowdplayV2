@@ -10,5 +10,5 @@ storiesOf("Shared", module)
   .addDecorator(centerContent)
   .add("VoteButton", () => <VoteButtonContainer />);
 
-storiesOf("HomeScreen", module).add("Default", () => <HomeScreen />)
+storiesOf("HomeScreen", module).add("Default", () => <HomeScreen />);
 
