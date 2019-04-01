@@ -25,7 +25,7 @@ export default class extends PureComponent<Props, State> {
 
   render() {
     return (
-      <button
+       <button
         onClick={this.onClick}
         className={`cbutton cbutton--effect-ivana ${
           this.state.currentAnimation

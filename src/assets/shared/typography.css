@@ -1,0 +1,30 @@
+
+/* TODO: Add proper font family styles. */
+
+/* @media only screen and (max-width: 520px) { */
+  /* .type--large-white {
+    color: var(--colour-white);
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }  
+  .type--large-green {
+    color: var(--colour-green);
+    font-size: 24px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  } */
+/* }   */
+
+
+/* @media only screen and (min-width: 521px) { */
+  .type--large-white {
+    color: var(--colour-white);
+    font-size: 42px;
+    font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }  
+
+  .type--large-green {
+    color: var(--colour-green);
+    font-size: 42px;
+    font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+/* } */

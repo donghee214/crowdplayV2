@@ -1,0 +1,16 @@
+.btn {
+  outline: none;
+  font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.btn[disabled] {
+  cursor: not-allowed;
+}
+
+.btn:not(:disabled):hover,
+.btn:not(:disabled):active,
+.btn:not(:disabled):focus {
+  opacity: 0.8;
+}

@@ -1,5 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots HomeScreen Default 1`] = `
+<div
+  className="home-screen"
+>
+  <div>
+    <div
+      className="type--large-white"
+    >
+      CrowdSource
+    </div>
+    <div
+      className="type--large-white"
+    >
+      Democratize your playlist
+    </div>
+  </div>
+  <div
+    className="home-screen__boxes-container"
+  >
+    <button
+      className="btn home-screen__box-input"
+      onClick={[Function]}
+    >
+      <div
+        className="home-screen__create-room__icon"
+      />
+      <div
+        className="type--large-white"
+      >
+        Create
+        <span
+          className="type--large-green"
+        >
+          .
+        </span>
+      </div>
+    </button>
+    <button
+      className="btn home-screen__box-input"
+      onClick={[Function]}
+    >
+      <div
+        className="home-screen__join-room__icon"
+      />
+      <div
+        className="type--large-white"
+      >
+        Join
+        <span
+          className="type--large-green"
+        >
+          .
+        </span>
+      </div>
+    </button>
+  </div>
+  <button
+    className="cbutton cbutton--effect-ivana "
+    onClick={[Function]}
+  >
+    <svg
+      className="voteButton voteButton--active"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+    >
+      <path
+        d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
 exports[`Storyshots Shared VoteButton 1`] = `
 <div
   style={
