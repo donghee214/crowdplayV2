@@ -33,6 +33,9 @@ export default class CreateJoinRoomScreen extends Component<Props> {
 
     return (
       <div className="createJoinRoom">
+        <div className="createJoinRoom__app-name type--small-white-bold">
+          Crowdplay V2
+        </div>
         <form
           onSubmit={evt => {
             evt.preventDefault();

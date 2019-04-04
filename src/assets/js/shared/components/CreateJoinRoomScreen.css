@@ -6,6 +6,12 @@
   height: 100%;
 }
 
+.createJoinRoom__app-name {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .createJoinRoom__content {
   border-bottom: 2px solid var(--colour-white);
   border-top: 2px solid var(--colour-white);
@@ -13,11 +19,11 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 60%;
+  padding: 10vh 0px;
 }
 
 .createJoinRoom__content__input-field {
-  padding: 24px 12px;
+  padding: 7vh 12px 10vh;
   color: var(--colour-white);
   width: 300px;
   margin: 0 auto;

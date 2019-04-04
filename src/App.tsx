@@ -21,7 +21,7 @@ class App extends Component {
       });
     return (
       <div className="App">
-        {/* TODO: Temporary... remove this once we set up react router  */}
+        {/* TODO: Temporary... remove this once we set up react router.  */}
         {this.state.show === 'Create' && <CreateJoinRoomScreen type="CREATE" />}
         {this.state.show === 'Join' && <CreateJoinRoomScreen type="JOIN" />}
         {this.state.show === '' && (
