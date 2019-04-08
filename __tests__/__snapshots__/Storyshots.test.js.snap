@@ -1,6 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Shared VoteButton 1`] = `
+exports[`Storyshots Shared Music Tile 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#333",
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
+      "width": "100vw",
+    }
+  }
+>
+  <div>
+    <div
+      className="musicTile--container"
+      style={
+        Object {
+          "backgroundImage": "linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ), url(https://i.scdn.co/image/1fda702d2f421f67ac8f40cf3e8e96ce1c3b70e1)",
+        }
+      }
+    >
+      <button
+        className="cbutton cbutton--effect-ivana "
+        onClick={[Function]}
+      >
+        <svg
+          className="voteButton voteButton--unactive"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+        >
+          <path
+            d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </button>
+      <h2>
+        2
+      </h2>
+      <h3
+        className="musicTile--songTitle"
+      >
+        Sleep On The Floor
+      </h3>
+      <h5>
+        3:31
+      </h5>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Shared Vote Button 1`] = `
 <div
   style={
     Object {

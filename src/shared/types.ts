@@ -39,4 +39,5 @@ export interface Song {
   popularity: number;
   preview_url: string;
   uri: string;
+  score: number;
 }

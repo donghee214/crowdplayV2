@@ -14,7 +14,7 @@ class App extends Component {
       });
     return (
       <div className="App">
-        <VoteButton active={true} clickHandler={() => console.log("dummy")} />
+        <VoteButton active={true} onClick={() => console.log("dummy")} />
       </div>
     );
   }

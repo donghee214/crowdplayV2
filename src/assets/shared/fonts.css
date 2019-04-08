@@ -1,1 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600");
+
+h2 {
+  font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--colour-white);
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  color: var(--colour-white);
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: var(--colour-white);
+  padding: 0;
+  margin: 0;
+}
+
+h5 {
+  font-size: 0.75rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: var(--colour-green);
+  padding: 0;
+  margin: 0;
+}
