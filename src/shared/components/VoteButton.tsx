@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import UpArrow from "assets/svgs/UpArrow";
+import React, { PureComponent } from 'react';
+import UpArrow from 'assets/svgs/UpArrow';
 
 interface Props {
   active: boolean;
@@ -12,20 +12,20 @@ interface State {
 
 export default class extends PureComponent<Props, State> {
   state = {
-    currentAnimation: ""
+    currentAnimation: ''
   };
 
   onClick = () => {
-    this.setState({ currentAnimation: "" });
+    this.setState({ currentAnimation: '' });
     this.props.active
-      ? this.setState({ currentAnimation: "cbutton--unclick" })
-      : this.setState({ currentAnimation: "cbutton--click" });
+      ? this.setState({ currentAnimation: 'cbutton--unclick' })
+      : this.setState({ currentAnimation: 'cbutton--click' });
     this.props.clickHandler();
   };
 
   render() {
     return (
-       <button
+      <button
         onClick={this.onClick}
         className={`cbutton cbutton--effect-ivana ${
           this.state.currentAnimation

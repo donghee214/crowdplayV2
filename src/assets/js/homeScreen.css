@@ -1,9 +1,9 @@
 .home-screen {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background-color: var(--colour-black);
-  height:100%;
+  height: 100%;
 }
 
 .home-screen__boxes-container {
@@ -16,8 +16,8 @@
   width: 170px;
   height: 170px;
   border: 2px solid var(--colour-white);
-  border-radius:5px;
-  display:flex;
+  border-radius: 5px;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -26,14 +26,11 @@
 .home-screen__create-room__icon {
   width: 50px;
   height: 50px;
-  background-image: url("../images/pencil-icon.svg");
   background-repeat: no-repeat;
 }
 
 .home-screen__join-room__icon {
   width: 50px;
   height: 50px;
-  background-image: url("../images/question-mark-icon.svg");
   background-repeat: no-repeat;
 }
-
