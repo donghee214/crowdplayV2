@@ -14,17 +14,33 @@
 /* }   */
 
 /* @media only screen and (min-width: 521px) { */
+
+.type--small-white-bold {
+  color: var(--colour-white);
+  font-size: 18px;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+    sans-serif;
+  font-weight: 600;
+}
+
+.type--small-green {
+  color: var(--colour-green);
+  font-size: 18px;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+    sans-serif;
+}
+
 .type--large-white {
   color: var(--colour-white);
   font-size: 42px;
-  font-family: "Montserrat", "Franklin Gothic Medium", "Arial Narrow", Arial,
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
     sans-serif;
 }
 
 .type--large-green {
   color: var(--colour-green);
   font-size: 42px;
-  font-family: "Montserrat", "Franklin Gothic Medium", "Arial Narrow", Arial,
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
     sans-serif;
 }
 /* } */

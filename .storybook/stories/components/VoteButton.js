@@ -24,7 +24,7 @@ export default class VoteButtonContainer extends PureComponent {
         <div style={{ textAlign: "center" }}>
           <VoteButton
             active={this.state.active}
-            clickHandler={() => this.setState({ active: !this.state.active })}
+            onClick={() => this.setState({ active: !this.state.active })}
           />
           <p>Interactive</p>
         </div>

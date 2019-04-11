@@ -11,7 +11,7 @@ interface Props {
 
 export default ({ song, isVoted, onClick }: Props) => (
   <div
-    className="musicTile--container"
+    className="music-tile__container"
     style={{
       backgroundImage: `linear-gradient(
         rgba(0, 0, 0, 0.4),
@@ -21,7 +21,7 @@ export default ({ song, isVoted, onClick }: Props) => (
   >
     <VoteButton active={isVoted} onClick={onClick} />
     <h2>{song.score}</h2>
-    <h3 className="musicTile--songTitle">{song.name}</h3>
+    <h3 className="music-tile__song-title">{song.name}</h3>
     <h5>{msToMinuteString(song.duration_ms)}</h5>
   </div>
 );

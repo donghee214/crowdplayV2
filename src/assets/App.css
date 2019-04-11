@@ -1,16 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
 
 /* Import Baseline styles */
 
-@import url("./shared/colours.css");
-@import url("./shared/typography.css");
-@import url("./shared/buttons.css");
+@import url('./shared/colours.css');
+@import url('./shared/typography.css');
+@import url('./shared/buttons.css');
 
 /* Import JS Styles */
 
 @import url("./js/shared/components/VoteButton.css");
 @import url("./js/shared/components/MusicTile.css");
-@import url("./js/homeScreen.css");
+@import url('./js/features/onboarding/homeScreen.css');
+@import url('./js/features/onboarding/CreateJoinRoomScreen.css');
+
 
 html {
   margin: 0;
@@ -34,4 +36,17 @@ body {
 #root {
   width: 100%;
   height: 100%;
+}
+
+input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  width: 100%;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--colour-white);
+  color: var(--colour-white);
+  padding: 0px 0px 8px;
+  text-align: center;
 }

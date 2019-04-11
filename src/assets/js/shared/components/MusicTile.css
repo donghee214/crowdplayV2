@@ -1,4 +1,4 @@
-.musicTile--container {
+.music-tile__container {
   width: 50%;
   height: 50%;
   min-width: 150px;
@@ -12,6 +12,6 @@
   background-size: cover;
 }
 
-.musicTile--songTitle {
+.music-tile__song-title {
   text-align: center;
 }

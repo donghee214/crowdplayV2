@@ -1,6 +1,7 @@
 .btn {
   outline: none;
-  font-family: 'Montserrat','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+    sans-serif;
   cursor: pointer;
   background-color: inherit;
 }

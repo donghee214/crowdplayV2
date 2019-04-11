@@ -17,7 +17,8 @@ module.exports = async ({ config, mode }) => {
     alias: {
       ...config.resolve.alias,
       assets: path.resolve(__dirname, "../src/assets"),
-      shared: path.resolve(__dirname, "../src/shared")
+      shared: path.resolve(__dirname, "../src/shared"),
+      features: path.resolve(__dirname, "../src/features")
     }
   };
 
