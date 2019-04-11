@@ -18,7 +18,9 @@
     "baseUrl": ".",
     "paths": {
       "shared": ["src/shared"],
-      "assets/*": ["src/assets/*"]
+      "shared/*": ["src/shared/*"],
+      "assets/*": ["src/assets/*"],
+      "features/*": ["src/features/*"]
     },
     "rootDirs": ["src"]
   },

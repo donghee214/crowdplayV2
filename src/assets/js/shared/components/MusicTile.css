@@ -1,0 +1,17 @@
+.music-tile__container {
+  width: 50%;
+  height: 50%;
+  min-width: 150px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.music-tile__song-title {
+  text-align: center;
+}

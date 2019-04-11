@@ -3,7 +3,7 @@ import UpArrow from 'assets/svgs/UpArrow';
 
 interface Props {
   active: boolean;
-  clickHandler: () => void;
+  onClick: () => void;
 }
 
 interface State {
@@ -20,7 +20,7 @@ export default class extends PureComponent<Props, State> {
     this.props.active
       ? this.setState({ currentAnimation: 'cbutton--unclick' })
       : this.setState({ currentAnimation: 'cbutton--click' });
-    this.props.clickHandler();
+    this.props.onClick();
   };
 
   render() {

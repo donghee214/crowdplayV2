@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { VoteButton } from 'shared';
-
 // TODO: smh think of a better name lol
 const BoxInput = ({
   title,
@@ -46,8 +44,6 @@ const HomeScreen = ({ onClickHandler }: HomeScreen) => (
         onClickHandler={onClickHandler}
       />
     </div>
-
-    <VoteButton active={true} clickHandler={() => console.log('dummy')} />
   </div>
 );
 

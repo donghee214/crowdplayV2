@@ -8,9 +8,11 @@
 
 /* Import JS Styles */
 
-@import url('./js/shared/components/VoteButton.css');
-@import url('./js/homeScreen.css');
-@import url('./js/shared/components/CreateJoinRoomScreen.css');
+@import url("./js/shared/components/VoteButton.css");
+@import url("./js/shared/components/MusicTile.css");
+@import url('./js/features/onboarding/homeScreen.css');
+@import url('./js/features/onboarding/CreateJoinRoomScreen.css');
+
 
 html {
   margin: 0;
@@ -34,18 +36,6 @@ body {
 #root {
   width: 100%;
   height: 100%;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-family: 'Montserrat', sans-serif;
-  color: var(--colour-white);
-}
-
-p {
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  color: var(--colour-white);
 }
 
 input {

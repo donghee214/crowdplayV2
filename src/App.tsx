@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import Firestore from './server/Firestore';
-import { VoteButton } from 'shared';
-import HomeScreen from './HomeScreen';
-import CreateJoinRoomScreen from './shared/components/CreateJoinRoomScreen';
+import React, { Component } from "react";
+import Firestore from "./server/Firestore";
+import HomeScreen from "features/onboarding/HomeScreen";
+import CreateJoinRoomScreen from 'features/onboarding/CreateJoinRoomScreen';
 import { totalmem } from 'os';
 
 class App extends Component {

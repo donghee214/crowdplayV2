@@ -21,6 +21,7 @@
   color: #286aab;
   font-size: 1.4em;
   transition: color 0.7s;
+  height: 2.25rem;
 }
 
 .cbutton.cbutton--click,
