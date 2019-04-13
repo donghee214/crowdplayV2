@@ -1,31 +1,24 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { APP_PATHS } from '../../routes';
+import PencilIcon from 'assets/images/PencilIcon';
+import QuestionMarkIcon from 'assets/images/QuestionMarkIcon';
 
 // TODO: smh think of a better name lol
-const BoxInput = ({
-  title,
-  iconClassname,
-  onClickHandler
-}: {
-  title: string;
-  iconClassname: string;
-  onClickHandler: (title: string) => boolean;
-}) => (
-  <button
+const BoxInput = ({ title }: { title: string }) => (
+  <Link
+    to={title === 'Create' ? APP_PATHS.CREATE_ROOM : APP_PATHS.JOIN_ROOM}
     className="btn home-screen__box-input"
-    onClick={() => onClickHandler(title)}
   >
-    <div className={iconClassname} />
+    {title === 'Create' ? <PencilIcon /> : <QuestionMarkIcon />}
     <div className="type--large-white">
       {title}
       <span className="type--large-green">.</span>
     </div>
-  </button>
+  </Link>
 );
 
-interface HomeScreen {
-  onClickHandler: (title: string) => boolean;
-}
-const HomeScreen = ({ onClickHandler }: HomeScreen) => (
+const HomeScreen = () => (
   <div className="home-screen">
     <div>
       <div className="type--large-white">CrowdSource</div>
@@ -33,16 +26,8 @@ const HomeScreen = ({ onClickHandler }: HomeScreen) => (
     </div>
 
     <div className="home-screen__boxes-container">
-      <BoxInput
-        title="Create"
-        iconClassname="home-screen__create-room__icon"
-        onClickHandler={onClickHandler}
-      />
-      <BoxInput
-        title="Join"
-        iconClassname="home-screen__join-room__icon"
-        onClickHandler={onClickHandler}
-      />
+      <BoxInput title="Create" />
+      <BoxInput title="Join" />
     </div>
   </div>
 );

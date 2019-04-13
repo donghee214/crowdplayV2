@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const QuestionMarkIcon = ({ size }: { size?: string }) => {
+const QuestionMarkIcon = ({ size }: { size?: string }) => {
   return (
     <svg
       width={size || '45'}
@@ -16,3 +16,5 @@ export const QuestionMarkIcon = ({ size }: { size?: string }) => {
     </svg>
   );
 };
+
+export default QuestionMarkIcon;
