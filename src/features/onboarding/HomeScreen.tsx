@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { APP_PATHS } from '../../routes';
+import { APP_PATHS } from 'root/routes';
 import PencilIcon from 'assets/images/PencilIcon';
 import QuestionMarkIcon from 'assets/images/QuestionMarkIcon';
 
