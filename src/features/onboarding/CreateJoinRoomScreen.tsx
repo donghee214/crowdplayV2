@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import { PencilIcon } from 'assets/images/pencilIcon';
-import { QuestionMarkIcon } from 'assets/images/questionMarkIcon';
+import PencilIcon from 'assets/images/PencilIcon';
+import QuestionMarkIcon from 'assets/images/QuestionMarkIcon';
 
 interface Props {
   type: string;

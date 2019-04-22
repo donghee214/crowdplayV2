@@ -1,4 +1,4 @@
-var path = require("path");
+var path = require('path');
 
 module.exports = async ({ config, mode }) => {
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -8,17 +8,18 @@ module.exports = async ({ config, mode }) => {
   // Make whatever fine-grained changes you need
   config.module.rules.push({
     test: /\.tsx?$/,
-    loader: "awesome-typescript-loader"
+    loader: 'awesome-typescript-loader'
   });
 
   config.resolve = {
     ...config.resolve,
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       ...config.resolve.alias,
-      assets: path.resolve(__dirname, "../src/assets"),
-      shared: path.resolve(__dirname, "../src/shared"),
-      features: path.resolve(__dirname, "../src/features")
+      assets: path.resolve(__dirname, '../src/assets'),
+      shared: path.resolve(__dirname, '../src/shared'),
+      features: path.resolve(__dirname, '../src/features'),
+      root: path.resolve(__dirname, '../src')
     }
   };
 

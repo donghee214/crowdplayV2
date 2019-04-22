@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PencilIcon = ({ size }: { size?: string }) => {
+const PencilIcon = ({ size }: { size?: string }) => {
   return (
     <svg
       width={size || '49'}
@@ -16,3 +16,5 @@ export const PencilIcon = ({ size }: { size?: string }) => {
     </svg>
   );
 };
+
+export default PencilIcon;
