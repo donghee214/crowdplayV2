@@ -46,9 +46,9 @@
 /* } */
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-family: "Montserrat", sans-serif;
-  color: var(--colour-white);
+  color: var(--color-light-black);
   padding: 0;
   margin: 0;
 }
@@ -56,7 +56,6 @@ h2 {
 p {
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
-  color: var(--colour-white);
   padding: 0;
   margin: 0;
 }
@@ -65,7 +64,15 @@ h3 {
   font-size: 1.1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  color: var(--colour-white);
+  padding: 0;
+  margin: 0;
+}
+
+h4{
+  font-size: 1rem;
+  font-family: "Source Sans Pro", sans-serif;
+  color: var(--color-light-grey);
+  font-weight: 600;
   padding: 0;
   margin: 0;
 }
@@ -74,7 +81,6 @@ h5 {
   font-size: 0.75rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  color: var(--colour-green);
   padding: 0;
   margin: 0;
 }

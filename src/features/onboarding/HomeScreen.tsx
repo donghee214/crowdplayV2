@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { APP_PATHS } from 'root/routes';
-import PencilIcon from 'assets/images/PencilIcon';
-import QuestionMarkIcon from 'assets/images/QuestionMarkIcon';
-
-// TODO: smh think of a better name lol
-const BoxInput = ({ title }: { title: string }) => (
-  <Link
-    to={title === 'Create' ? APP_PATHS.CREATE_ROOM : APP_PATHS.JOIN_ROOM}
-    className="btn home-screen__box-input"
-  >
-    {title === 'Create' ? <PencilIcon /> : <QuestionMarkIcon />}
-    <div className="type--large-white">
-      {title}
-      <span className="type--large-green">.</span>
-    </div>
-  </Link>
-);
+import RoomCard from "features/onboarding/RoomCard"
+import Button from "shared/components/Button"
 
 const HomeScreen = () => (
   <div className="home-screen">
-    <div>
-      <div className="type--large-white">CrowdSource</div>
-      <div className="type--large-white">Democratize your playlist</div>
-    </div>
+    <div className="home-screen_title-container">
+      <h2>
+        chocolate<span className="home-screen_title_green">.</span>
+      </h2>
 
-    <div className="home-screen__boxes-container">
-      <BoxInput title="Create" />
-      <BoxInput title="Join" />
+    </div>
+    <div className="home-screen_nearby-container">
+      <h4 className="home-screen_nearby-container-title">
+        Nearby
+      </h4>
+      <div className="home-screen_nearby-scroll-container">
+        {["room1", "room2", "room3"].map((val) => <RoomCard roomName={val} />)}
+      </div>
+    </div>
+    <div className="home-screen_join-room-container">
+      <h4 className="home-screen_nearby-container-title">
+        Join Room
+      </h4>
+      <input className="home-screen_join-room-input" placeholder="Enter Room Code" />
+      <Button>
+        <h4 className="buttonText">
+          Join
+        </h4>
+      </Button>
+    </div>
+    <div className="home-screen_create-room-container">
+      <h4 className="home-screen_nearby-container-title">
+        Create Room
+      </h4>
+
     </div>
   </div>
 );
