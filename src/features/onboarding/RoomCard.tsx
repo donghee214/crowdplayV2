@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { Room } from "shared/types"
 
-interface RoomCardProps {
-    roomName: string
+interface RoomCardProps extends Room {
+    color: string
 }
 
-const RoomCard: React.FC<RoomCardProps> = ({ roomName }) => (
-    <div className="room-card_container">
+const RoomCard: React.FC<RoomCardProps> = ({ name, color }) => (
+    <div className="room-card_container" style={{ backgroundColor: color }}>
         <h4 className="room-card_container_title">
-            {roomName}
+            {/* {name} */}
         </h4>
     </div>
 )

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,15 +21,36 @@
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
-      "root": ["src"],
-      "root/*": ["src/*"],
-      "shared": ["src/shared"],
-      "shared/*": ["src/shared/*"],
-      "assets": ["src/assets"],
-      "assets/*": ["src/assets/*"],
-      "features/*": ["src/features/*"]
+      "root": [
+        "src"
+      ],
+      "root/*": [
+        "src/*"
+      ],
+      "shared": [
+        "src/shared"
+      ],
+      "shared/*": [
+        "src/shared/*"
+      ],
+      "assets": [
+        "src/assets"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "features/*": [
+        "src/features/*"
+      ],
+      "server/*": [
+        "src/server/*"
+      ]
     },
-    "rootDirs": ["src"]
+    "rootDirs": [
+      "src"
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

@@ -43,6 +43,15 @@
   font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial,
     sans-serif;
 }
+
+.type--error{
+  text-align: left;
+  font-size: 0.8rem;
+  color: red;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
 /* } */
 
 h2 {
@@ -54,8 +63,9 @@ h2 {
 }
 
 p {
-  font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  font-family: "Source Sans Pro", sans-serif;
+  color: var(--color-light-grey);
   padding: 0;
   margin: 0;
 }
@@ -69,7 +79,7 @@ h3 {
 }
 
 h4{
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: "Source Sans Pro", sans-serif;
   color: var(--color-light-grey);
   font-weight: 600;

@@ -2,11 +2,11 @@ import React from "react"
 
 interface ButtonProps {
     children: React.ReactElement;
-    callback?: VoidFunction
+    callback: Function
 }
 
 const Button: React.FC<ButtonProps> = ({ children, callback }) => (
-    <div className="btn">
+    <div className="btn" onClick={() => callback()}>
         {children}
     </div>
 )

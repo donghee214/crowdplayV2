@@ -9,6 +9,7 @@
 /* Import JS Styles */
 @import url("./js/shared/components/VoteButton.css");
 @import url("./js/shared/components/MusicTile.css");
+@import url("./js/shared/components/Loading.css");
 @import url('./js/features/onboarding/homeScreen.css');
 @import url('./js/features/onboarding/CreateJoinRoomScreen.css');
 

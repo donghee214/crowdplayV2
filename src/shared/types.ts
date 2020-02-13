@@ -41,3 +41,10 @@ export interface Song {
   uri: string;
   score: number;
 }
+
+export interface Room {
+  adminId: string;
+  name: string;
+  id: string;
+  currentlyPlaying?: Song;
+}

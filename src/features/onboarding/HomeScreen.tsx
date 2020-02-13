@@ -1,41 +1,84 @@
-import React, { Component } from 'react';
-import RoomCard from "features/onboarding/RoomCard"
+import React, { useState, useEffect } from 'react';
 import Button from "shared/components/Button"
+import Input from "shared/components/Input"
+import Loading from "shared/components/Loading"
+import NearbyRooms from "features/onboarding/NearbyRooms"
+import { withRouter, RouteComponentProps } from "react-router"
+import { useLazyQuery } from '@apollo/react-hooks';
+import { GET_ROOM } from "server/Apollo/Queries"
 
-const HomeScreen = () => (
-  <div className="home-screen">
-    <div className="home-screen_title-container">
-      <h2>
-        chocolate<span className="home-screen_title_green">.</span>
-      </h2>
 
-    </div>
-    <div className="home-screen_nearby-container">
-      <h4 className="home-screen_nearby-container-title">
-        Nearby
-      </h4>
-      <div className="home-screen_nearby-scroll-container">
-        {["room1", "room2", "room3"].map((val) => <RoomCard roomName={val} />)}
+interface HomeScreenProps extends RouteComponentProps {
+
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({
+  history
+}) => {
+
+  const [roomInput, setRoomInput] = useState("")
+  const [runQuery, { called, loading, data, error }] = useLazyQuery(GET_ROOM)
+
+  const updateRoomInput = (e: React.FormEvent<HTMLInputElement>) => {
+    setRoomInput(e.currentTarget.value)
+  }
+
+  useEffect(() => {
+    if (data) {
+      history.push({
+        pathname: `/voting_room/${roomInput}}`
+      })
+    }
+  }, [data])
+
+  const sanitize = (str: string) => {
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim, "")
+    return str.trim()
+  }
+
+  const joinRoomCallback = async (roomId: string) => {
+    roomId = sanitize(roomId)
+    setRoomInput(roomId)
+    await runQuery({
+      variables: { id: roomId }
+    })
+
+  }
+  return (
+    <div className="home-screen">
+      <div className="home-screen_title-container">
+        <h2>
+          chocolate<span className="home-screen_title_green">.</span>
+        </h2>
+      </div>
+      <NearbyRooms />
+      <div className="home-screen_join-room-container">
+        <h4 className="home-screen_nearby-container-title">
+          Join Room
+        </h4>
+        <Input
+          onChangeCallback={updateRoomInput}
+          value={roomInput}
+          placeholder={"Enter Room ID"}
+          errorMessage={error && error.message}
+          callback={() => joinRoomCallback(roomInput)}
+        />
+        <Button callback={() => joinRoomCallback(roomInput)}>
+          <h4 className="buttonText">
+            {loading ? <Loading /> : "Join"}
+          </h4>
+        </Button>
+      </div>
+      <div className="home-screen_create-room-container">
+        <h4 className="home-screen_nearby-container-title">
+          Create Room
+        </h4>
+        <p className="home-screen_create-room-text">
+          Unfortunately, no support for playback exists on web for mobile yet! Get the app here.
+        </p>
       </div>
     </div>
-    <div className="home-screen_join-room-container">
-      <h4 className="home-screen_nearby-container-title">
-        Join Room
-      </h4>
-      <input className="home-screen_join-room-input" placeholder="Enter Room Code" />
-      <Button>
-        <h4 className="buttonText">
-          Join
-        </h4>
-      </Button>
-    </div>
-    <div className="home-screen_create-room-container">
-      <h4 className="home-screen_nearby-container-title">
-        Create Room
-      </h4>
+  )
+};
 
-    </div>
-  </div>
-);
-
-export default HomeScreen;
+export default withRouter(React.memo(HomeScreen));

@@ -11,6 +11,7 @@ module.exports = {
           shared: "./src/shared",
           utils: "./src/utils",
           vendor: "./src/vendor",
+          server: "./src/server",
           root: "./src"
         }
       }
