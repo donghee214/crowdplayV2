@@ -1,17 +1,46 @@
 .music-tile__container {
-  width: 33%;
-  height: 33%;
-  min-width: 150px;
-  min-height: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 33vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.music-tile__container__large{
+  grid-column: auto/span 2;
+  grid-row: auto/span 2;
+  height: 66vw;
+  padding: 1rem 1em;
 }
 
 .music-tile__song-title {
+  font-size: 0.75rem;
   text-align: center;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-tile__song-artist {
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--color-off-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-tile__song-duration{
+  color: var(--color-green);
+  text-align: center;
+}
+
+.music-tile__song-score{
+  color: var(--color-light-green);
+  font-size: 2.25rem;
+  z-index: 1;
 }

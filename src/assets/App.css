@@ -12,7 +12,7 @@
 @import url("./js/shared/components/Loading.css");
 @import url('./js/features/onboarding/homeScreen.css');
 @import url('./js/features/onboarding/CreateJoinRoomScreen.css');
-
+@import url('./js/features/votingroom/votingRoom.css');
 
 html {
   margin: 0;

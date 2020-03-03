@@ -7,11 +7,14 @@ import db from "server/Firestore"
 
 const NearbyRooms = () => {
     const [rooms, setRooms] = useState()
-    db.collection("rooms")
-        .onSnapshot((snapshot) => {
+    useEffect(() => {
+        const unsub = db.collection("rooms").onSnapshot((snapshot) => {
             let rooms = snapshot.docs.map((doc) => doc.data())
             setRooms(rooms)
         })
+        return () => unsub()
+    }, [])
+
     const renderRooms = () => {
         if (!rooms) {
             return <Loading classNameText={"loadingGreen"} />

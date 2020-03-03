@@ -1,0 +1,9 @@
+.votingroom_song-container{
+    grid-template-rows: repeat(auto-fit, minmax(29vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(33vw, 1fr));
+    display: grid;
+    -webkit-justify-content: center;
+    justify-content: start;
+    -webkit-align-content: end;
+    align-content: start;
+}

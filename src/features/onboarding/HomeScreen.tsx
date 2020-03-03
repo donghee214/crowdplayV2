@@ -3,21 +3,20 @@ import Button from "shared/components/Button"
 import Input from "shared/components/Input"
 import Loading from "shared/components/Loading"
 import NearbyRooms from "features/onboarding/NearbyRooms"
-import { withRouter, RouteComponentProps } from "react-router"
+import { useHistory } from "react-router-dom"
 import { useLazyQuery } from '@apollo/react-hooks';
 import { GET_ROOM } from "server/Apollo/Queries"
 
 
-interface HomeScreenProps extends RouteComponentProps {
+interface HomeScreenProps {
 
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = ({
-  history
-}) => {
+const HomeScreen: React.FC<HomeScreenProps> = () => {
 
   const [roomInput, setRoomInput] = useState("")
   const [runQuery, { called, loading, data, error }] = useLazyQuery(GET_ROOM)
+  const history = useHistory()
 
   const updateRoomInput = (e: React.FormEvent<HTMLInputElement>) => {
     setRoomInput(e.currentTarget.value)
@@ -26,7 +25,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   useEffect(() => {
     if (data) {
       history.push({
-        pathname: `/voting_room/${roomInput}}`
+        pathname: `/voting_room/${roomInput}`
       })
     }
   }, [data])
@@ -39,6 +38,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   const joinRoomCallback = async (roomId: string) => {
     roomId = sanitize(roomId)
     setRoomInput(roomId)
+    localStorage.setItem('browserID', 'Tom');
     await runQuery({
       variables: { id: roomId }
     })
@@ -81,4 +81,4 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
   )
 };
 
-export default withRouter(React.memo(HomeScreen));
+export default React.memo(HomeScreen);

@@ -40,6 +40,8 @@ export interface Song {
   preview_url: string;
   uri: string;
   score: number;
+  isRec: boolean;
+  voters: string[];
 }
 
 export interface Room {
