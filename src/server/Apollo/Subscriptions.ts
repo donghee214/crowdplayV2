@@ -1,10 +1,11 @@
 import gql from "graphql-tag"
 
 export const SONGS_ADDED_SUBSCRIPTION = gql`
-  subscription onSongAdded($roomId: String!) {
-    songAdded(roomId: $roomId) {
+  subscription ($roomId: ID!) {
+    songAdded(roomId: $roomId){
         id
         name
+        isRec
         album{
           id
           images{
@@ -19,6 +20,13 @@ export const SONGS_ADDED_SUBSCRIPTION = gql`
         }
         duration_ms
         score
+      }
     }
-  }
 `;
+
+export const SONG_UPVOTED = gql`
+    subscription ($songId: ID!){
+        id
+        score
+    }
+`

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useRef, useCallback } from "react"
 import { useLocation } from "react-router-dom"
 import { Song } from "shared/types"
-import Loading from "shared/components/Loading"
 import CurrentlyPlaying from "features/votingRoom/CurrentlyPlaying"
-import { useQuery } from "@apollo/react-hooks";
-import { GET_SONG_RECS, GET_ROOM } from "server/Apollo/Queries"
-import { SONGS_ADDED_SUBSCRIPTION } from "server/Apollo/Subscriptions"
+import AddedSongContainer from "features/votingRoom/AddedSongsContainer"
+import SearchSongsContainer from "features/votingRoom/SearchSongsContainer"
 import MusicTile from "shared/components/MusicTile"
-import db from "server/Firestore"
+import { CSSTransition } from "react-transition-group";
+
+
 
 interface VotingRoomProps {
 
@@ -16,49 +16,18 @@ interface VotingRoomProps {
 const VotingRoom: React.FC<VotingRoomProps> = () => {
     const location = useLocation()
     const roomId = location.pathname.split("/").pop()
-    let { loading: recsLoading, data: recsData, error: recsError } = useQuery(GET_SONG_RECS, { variables: { seed: ["dance"] } })
-    let { loading: songsLoading, data: roomData, error: songsError, subscribeToMore, updateQuery } = useQuery(GET_ROOM, { variables: { id: roomId } })
-    subscribeToMore({
-        document: SONGS_ADDED_SUBSCRIPTION,
-        variables: { roomId },
-        updateQuery: (prev, { subscriptionData }) => {
-            if (!subscriptionData.data) return prev;
-            const newSong = subscriptionData.data.songAdded;
-            console.log(newSong)
-            return Object.assign({}, prev, {
-                room: {
-                    songs: [newSong, ...prev.entry.comments]
-                }
-            });
-        }
-    })
+    const [isSearch, setIsSearch] = useState<boolean>(false)
+    const [containerHeight, setContainerHeight] = useState<number>(200)
 
-    // useEffect(() => {
-    //     const unsub = db.collection(`rooms/${roomId}/songs`).onSnapshot((snapshot) => {
-    //         let newSongs: any = []
-    //         snapshot.docChanges().forEach((change) => {
-    //             if (change.type == "added") {
-    //                 newSongs.push(change.doc.data())
-    //             }
-    //         })
-    //         roomData.room.songs = [...roomData.room.songs, ...newSongs]
-    //     })
-    //     return () => unsub()
-    // }, [])
+    const songsRef = useRef<HTMLDivElement>(null)
 
-    // useEffect(() => {
-    //     if (!roomData || !recsData) return
-    //     let ids = new Set()
-    //     let allSongs = [...roomData.room.songs.sort((a: Song, b: Song) => b.score - a.score), ...recsData.songRecs]
-    //     allSongs = allSongs.filter((song) => {
-    //         if (song.id in ids) return false
-    //         ids.add(song.id)
-    //         return true
-    //     })
-    //     setTiles(allSongs)
-    // }, [roomData, recsData])
+    const toggleSearch = (val: boolean) => {
+        setIsSearch(val)
+        const node = songsRef.current!
+        node.scrollIntoView({ behavior: "smooth" })
+    }
 
-    const songToTile = (songs: Song[]) => {
+    const songToTile = ({ songs, isRec }: { songs: Song[], isRec: boolean }) => {
         let nextLargePortrait = 1
         let addition = 10
         return songs.map((song: Song, index: number) => {
@@ -70,22 +39,46 @@ const VotingRoom: React.FC<VotingRoomProps> = () => {
                     addition = 8
                 }
                 nextLargePortrait += addition
-                return <MusicTile key={song.id} song={song} large={true} roomId={roomId} />
+                return <MusicTile key={song.trackId} song={song.song} large={true} score={song.score} roomId={roomId} />
             }
-            return <MusicTile key={song.id} song={song} large={false} roomId={roomId} />
+            return <MusicTile key={song.trackId} song={song.song} large={false} score={song.score} roomId={roomId} />
         })
     }
-
-    const renderVotingContent = () => {
-        if (recsLoading || songsLoading) return <Loading />
-        if (recsError || songsError) return <h2>Oops something went wrong!</h2>
-        return <h2>Oops something went wrong!</h2>
-    }
-
     return (
-        <div className="votingroom_song-container">
-            <CurrentlyPlaying roomName={roomId} />
-            {roomData && recsData && songToTile([...roomData.room.songs, ...recsData.songRecs])}
+        <div className="votingRoom-container">
+            <CurrentlyPlaying
+                roomName={roomId}
+            />
+            <div className="votingroom_currentlyPlayingBuffer" />
+            <div className="votingroom_addedSongs-container" ref={songsRef} style={{ height: containerHeight + 100 }}>
+                <div className="votingroom_addedSong-tab" />
+
+                <CSSTransition
+                    appear={true}
+                    // unmountOnExit={true}
+                    in={!isSearch}
+                    timeout={400}
+                    classNames="votingroom-musictile-animation">
+                    <AddedSongContainer
+                        songToTile={songToTile}
+                        setIsSearch={toggleSearch}
+                        setContainerHeight={setContainerHeight}
+                    />
+
+                </CSSTransition>
+                <CSSTransition
+                    appear={true}
+                    unmountOnExit={true}
+                    in={isSearch}
+                    timeout={400}
+                    classNames="votingroom-musictile-animation">
+                    <SearchSongsContainer
+                        setIsSearch={toggleSearch}
+                    />
+                </CSSTransition>
+
+            </div>
+
         </div>
     )
 }

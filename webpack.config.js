@@ -4,6 +4,7 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".jsx"]
   },
 
+
   // Source maps support ('inline-source-map' also works)
   devtool: "source-map",
 
@@ -11,8 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' }
+      },
+      {
         test: /\.tsx?$/,
-        loader: "awesome-typescript-loader"
+        loader: "awesome-typescript-loader",
       }
     ]
   }

@@ -1,0 +1,27 @@
+.addedSong{
+    fill: transparent;
+}
+
+.addSong{
+    fill: var(--color-white);
+    width: 32px;
+    height: 32px;
+}
+
+.addedSong--active{
+    fill: var(--color-green)
+}
+
+.addedSong--large{
+    width: 76px;
+    height: 76px;
+    stroke: var(--color-green);
+    stroke-width: 0.5px;
+}
+
+.addedSong--small{
+    width: 42px;
+    height: 42px;
+    stroke: var(--color-green);
+    stroke-width: 0.4px;
+}

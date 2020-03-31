@@ -1,23 +1,63 @@
-import React from "react";
-import { Song } from "shared/types";
-import { useQuery, useMutation } from "@apollo/react-hooks"
-import { ADD_SONG } from "server/Apollo/Mutations"
-import { msToMinuteString } from "shared/utils/timeConverter";
+import React, { useState, useEffect } from "react";
+import { SpotifySong, Song } from "shared/types";
+import { useMutation } from "@apollo/react-hooks"
+import { ADD_SONG, UPVOTE_SONG } from "server/Apollo/Mutations"
+import AddedSong from "assets/svgs/AddedSong"
+
+import db from "server/Firestore"
 
 interface Props {
-  song: Song;
+  song: SpotifySong;
   large: boolean;
   roomId?: string;
+  score: number;
 }
 
-export default ({ song, large, roomId }: Props) => {
-  const [addSong, { data }] = useMutation(ADD_SONG)
+
+//TODO: REFACTOR INTO A CONTAINER COMPONENT, ONE FOR RECS THE OTHER FOR ADDED SONGS
+const MusicTile = ({ song, large, roomId, score }: Props) => {
+  const [addSong, { data: addSongData, error: addSongDataError }] = useMutation(ADD_SONG)
+  const [upvoteSong, { data: upvoteSongData }] = useMutation(UPVOTE_SONG)
+  const [upVoted, setUpVoted] = useState<number>(0)
+  const [isAdded, setIsAdded] = useState(false)
+
+
   const clickHandler = () => {
-    if (song.isRec) {
-      addSong({ variables: { roomId, trackId: song.id } })
-      // subscribe to more changes to this song 
+    if (!score && !isAdded) {
+      setIsAdded(true)
+      addSong({
+        variables: { roomId, song: song as SpotifySong }
+      })
+      return
+    }
+    else {
+      const songRef = db
+        .firestore()
+        .doc(`rooms/${roomId}/songs/${song.id}`)
+      songRef.update({
+        score: db.firestore.FieldValue.increment(1)
+      })
     }
   }
+
+  const renderScore = () => {
+    if (!score) {
+      return (
+        <div className="music-tile__score-container">
+          <h3 className="music-tile__song-score">
+            <AddedSong active={isAdded} isLarge={large} />
+          </h3>
+        </div>
+
+      )
+    }
+    return (
+      <h3 className="music-tile__song-score">
+        {score + upVoted}
+      </h3>
+    )
+  }
+
   return (
     <div
       className={`${large && "music-tile__container__large"} music-tile__container`}
@@ -30,10 +70,14 @@ export default ({ song, large, roomId }: Props) => {
       onClick={clickHandler}
     >
       {/* <VoteButton active={isVoted} onClick={onClick} /> */}
-      <h3 className="music-tile__song-score">{song.score}</h3>
+
+      {renderScore()}
       <h3 className="music-tile__song-title">{song.name}</h3>
       <h4 className="music-tile__song-artist">{song.artists[0].name}</h4>
       {/* <h5 className="music-tile__song-duration">{msToMinuteString(song.duration_ms)}</h5> */}
     </div>
   )
 };
+
+
+export default React.memo(MusicTile)

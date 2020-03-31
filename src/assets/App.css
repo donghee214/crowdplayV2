@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap');
-/* Import Baseline styles */
 
+/* Import Baseline styles */
 @import url('./shared/colours.css');
 @import url('./shared/typography.css');
 @import url('./shared/buttons.css');
 
 /* Import JS Styles */
 @import url("./js/shared/components/VoteButton.css");
+@import url("./js/shared/components/AddedSong.css");
+@import url("./js/shared/components/AddSong.css");
 @import url("./js/shared/components/MusicTile.css");
 @import url("./js/shared/components/Loading.css");
+@import url("./js/shared/components/Share.css");
+@import url("./js/shared/components/Back.css");
+@import url("./js/shared/components/Refresh.css");
 @import url('./js/features/onboarding/homeScreen.css');
 @import url('./js/features/onboarding/CreateJoinRoomScreen.css');
 @import url('./js/features/votingroom/votingRoom.css');

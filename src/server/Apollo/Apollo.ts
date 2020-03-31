@@ -1,25 +1,15 @@
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { InMemoryCache } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 import { split } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
-const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
-    // credentials: 'include',
-    cache: new InMemoryCache(),
-    request: (operation) => {
-        const token = localStorage.getItem('token')
-        operation.setContext({
-            headers: {
-                authorization: token ? `Bearer ${token}` : ''
-            }
-        });
-    }
-})
+
 
 const httpLink = new HttpLink({
-    uri: 'http://localhost:4000/graphql'
+    uri: 'http://localhost:4000/graphql',
+    credentials: 'include'
 });
 
 // Create a WebSocket link:
@@ -45,5 +35,20 @@ const link = split(
     httpLink,
 );
 
+const client = new ApolloClient({
+    link,
+    cache: new InMemoryCache({
+        addTypename: false
+    })
+    // credentials: 'include',
+    // request: (operation) => {
+    //     const token = localStorage.getItem('token')
+    //     operation.setContext({
+    //         headers: {
+    //             authorization: token ? `Bearer ${token}` : ''
+    //         }
+    //     });
+    // }
+})
 
 export default client

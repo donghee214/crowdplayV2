@@ -1,12 +1,13 @@
-import React from "react"
+import React, { useCallback } from "react"
 
 interface InputProps {
     customClassName?: string,
     placeholder?: string,
     errorMessage?: string,
+    focusOnRender?: boolean,
     callback?: Function,
     onChangeCallback: (e: React.FormEvent<HTMLInputElement>) => void,
-    value: string
+    value: string,
 }
 
 const Input: React.FC<InputProps> = ({
@@ -15,13 +16,21 @@ const Input: React.FC<InputProps> = ({
     placeholder,
     value,
     errorMessage,
-    callback
+    callback,
+    focusOnRender
 }) => {
     const checkIfEnter = (e: React.KeyboardEvent) => {
         if (e.key === "Enter" && callback) {
             callback()
         }
     }
+
+    const focusInput = useCallback((node) => {
+        if (node) {
+            node.focus()
+        }
+    }, [])
+
     return (
         <div>
             <input
@@ -29,7 +38,9 @@ const Input: React.FC<InputProps> = ({
                 placeholder={placeholder || ""}
                 onChange={onChangeCallback}
                 onKeyPress={checkIfEnter}
-                value={value} />
+                value={value}
+                ref={focusOnRender ? focusInput : null}
+            />
             <p className="type--error">
                 {errorMessage}
             </p>

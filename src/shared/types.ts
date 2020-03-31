@@ -25,7 +25,7 @@ export interface Image {
   url: string;
 }
 
-export interface Song {
+export interface SpotifySong {
   id: string;
   album: Album;
   artists: Artist[];
@@ -39,14 +39,36 @@ export interface Song {
   popularity: number;
   preview_url: string;
   uri: string;
-  score: number;
-  isRec: boolean;
+}
+
+export interface Song {
   voters: string[];
+  score: number;
+  trackId: string;
+  song: SpotifySong
 }
 
 export interface Room {
   adminId: string;
   name: string;
   id: string;
-  currentlyPlaying?: Song;
+  currentSong?: Song;
+  vibrantColour: number[]
+}
+
+export interface Playlist {
+  collaborative: boolean
+  description: string
+  href: string
+  id: string
+  images: Image[]
+  name: string
+  primary_color: string
+  snapshot_id: string
+  tracks: {
+    href: string
+    total: number
+  }
+  type: string
+  uri: string
 }

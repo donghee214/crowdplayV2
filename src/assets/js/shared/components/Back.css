@@ -1,0 +1,6 @@
+.back{
+    margin: 1rem;
+    fill: var(--color-light-green);
+    width: 30px;
+    height: 30px;
+}

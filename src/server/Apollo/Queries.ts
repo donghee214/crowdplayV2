@@ -1,5 +1,59 @@
 import gql from 'graphql-tag';
 
+export const GET_SEARCH = gql`
+  query Search($query: String!, $limit: Int, $offset: Int){
+    search(q: $query, limit: $limit, offset: $offset){
+      artists{
+        id
+        name
+        images{
+          height
+          width
+          url
+        }
+      }
+      tracks{
+        id
+        name
+        artists{
+          name
+        }
+        duration_ms
+        album{
+          images{
+            height
+            width
+            url
+          }
+        }
+      }
+      albums{
+        id
+        name
+        images{
+          height
+          width
+          url
+        }
+      }
+      playlists{
+        id
+        name
+        description
+        images{
+          height
+          width
+          url
+        }
+        tracks{
+          href
+          total
+        }
+        primary_color
+      }
+    }
+  }
+`
 
 export const GET_ROOM = gql`
   query Room($id: ID!){
@@ -8,25 +62,6 @@ export const GET_ROOM = gql`
       name
       adminUser{
         id
-      }
-      songs{
-        id
-        name
-        isRec
-        album{
-          id
-          images{
-            height
-            width
-            url
-          }
-        }
-        artists{
-          id
-          name
-        }
-        duration_ms
-        score
       }
     }
   }
@@ -60,9 +95,14 @@ export const GET_SONG_RECS = gql`
     songRecs(seed: $seed){
       id
       name
-      isRec
+      popularity
+      preview_url
+      href
+      uri
       album{
         id
+        album_type
+        href
         images{
           height
           width
@@ -72,9 +112,10 @@ export const GET_SONG_RECS = gql`
       artists{
         id
         name
+        uri
+        href
       }
       duration_ms
-      score
     }
   }
 `
