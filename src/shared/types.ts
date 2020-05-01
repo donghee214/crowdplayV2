@@ -2,11 +2,13 @@ export interface Artist {
   external_urls: {
     spotify: string;
   };
+  images?: Image[];
   href: string;
   id: string;
   name: string;
   type: string;
   uri: string;
+  genres?: string[];
 }
 
 export interface Album {
@@ -71,4 +73,7 @@ export interface Playlist {
   }
   type: string
   uri: string
+  owner: {
+    display_name: string
+  }
 }

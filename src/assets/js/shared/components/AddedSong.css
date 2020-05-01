@@ -2,12 +2,6 @@
     fill: transparent;
 }
 
-.addSong{
-    fill: var(--color-white);
-    width: 32px;
-    height: 32px;
-}
-
 .addedSong--active{
     fill: var(--color-green)
 }

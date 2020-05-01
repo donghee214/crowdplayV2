@@ -1,7 +1,6 @@
 .votingRoom-container{
-    scroll-snap-type: y mandatory;
-    height: 100vh;
-    overflow-y: scroll;
+    /* scroll-snap-type: y proximity;
+    overflow-y: scroll; */
     scroll-padding: 125px;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .votingroom_song-container{
-    grid-template-rows: repeat(2, minmax(29vw, 1fr));
-    grid-template-columns: repeat(3, minmax(33vw, 1fr));
+    /* grid-template-rows: repeat(2, minmax(29vw, 1fr)); */
+    grid-template-columns: repeat(3, minmax(33%, 1fr));
     display: grid;
     -webkit-justify-content: center;
     justify-content: start;
@@ -46,7 +45,8 @@
     justify-content: center;
     position: fixed;
     top: 0;
-    height: 75vh;
+    height: 80vh;
+    box-sizing: border-box;
 
 }
 
@@ -55,7 +55,9 @@
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-    margin: 1rem 1.25rem;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .votingroom_currentlyPlaying-titleContainer{
@@ -77,8 +79,8 @@
 }
 
 .votingroom_currentlyPlaying-albumCover{
-    width: 18rem;
-    height: 18rem;
+    width: 100%;
+    padding-top: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -108,29 +110,51 @@
 
 .votingroom_addedSongs-container{
     scroll-snap-align: start;
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 35px;
     padding-top: 10px;
     position: relative;
     width: 100vw;
     min-height: 100vh;
+    box-sizing: border-box;
+
+}
+
+@media only screen and (min-width: 600px) {
+    .votingroom_addedSongs-container{
+        width: 35vw;
+        float: right;
+
+    }
+    .votingroom_currentlyPlaying-container{
+        width: 65vw;
+        padding: 0 3rem;
+    }
 }
 
 .votingroom_currentlyPlayingBuffer{
     scroll-snap-align: start;
     position: relative;
     width: 100vw;
-    height: 75vh;
+    height: 80vh;
+    z-index: -1;
 }
 
 .votingroom_addSong-container{
-    width: 60px;
-    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-height: 60px;
+    max-width: 60px;
     border-radius: 50%;
     background-color: var(--color-green);
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.25s;
+}
+
+.votingroom_addSong-container_mouseDown{
+    background-color: var(--color-light-green);
 }
 
 .votingroom_loading-container{
@@ -142,7 +166,7 @@
     align-items: center;
     -webkit-flex-direction: column;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     grid-column: auto/span 3;
     grid-row: auto/span 3;
     padding: 2rem;
@@ -159,7 +183,7 @@
     align-items: center;
     -webkit-flex-direction: column;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
     grid-column: auto/span 3;
     grid-row: auto/span 3;
     padding: 2rem;
@@ -173,62 +197,163 @@
     height: 8px;
     width: 150px;
     left: calc(50% - 75px);
-    background-color: white;
+    background-color: var(--color-white);
     margin-bottom: 10px;
     border-radius: 15px;
 }
 
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 
-.votingroom-musictile-animation{
-    transition: opacity 400ms;
+@keyframes fade-out {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+.fade-animation{
+    opacity: 0;
+    position: relative;
+}
+
+.fade-animation-appear{
     opacity: 0;
     position: absolute;
 }
 
-.votingroom-musictile-animation-appear{
-    opacity: 0;
-    transition: opacity 400ms;
+.fade-animation-appear-active{
+    animation: fade-in;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
     position: absolute;
 }
 
-.votingroom-musictile-animation-appear-active{
+.fade-animation-appear-done{
+    position: absolute;
     opacity: 1;
-    transition: opacity 400ms;
-    position: absolute;
-    /* transition: opacity 10000ms; */
 }
 
-.votingroom-musictile-animation-enter{
+.fade-animation{
+    opacity: 0;
+    position: relative;
+}
+
+.fade-animation-enter{
     opacity: 0;
     position: absolute;
 }
 
-.votingroom-musictile-animation-enter-active{
+.fade-animation-enter-active{
+    animation: fade-in;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position: absolute;
+}
+
+.fade-animation-enter-done{
+    position: absolute;
     opacity: 1;
-    transition: opacity 400ms;
-    position: absolute;
 }
 
-.votingroom-musictile-animation-enter-done{
-    position: absolute;
-}
-
-.testcontainer{
-    position: absolute;
-}
-
-.votingroom-musictile-animation-exit{
+.fade-animation-exit{
     opacity: 1;
     position: absolute;
 }
 
-.votingroom-musictile-animation-exit-active {
+.fade-animation-exit-active {
+    animation: fade-out;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position: absolute;
+}
+
+.fade-animation-exit-done {
     opacity: 0;
-    transition: opacity 400ms;
+    position: absolute;
+    display: none;
+}
+
+
+.fade-animation-addedSongs-enter{
+    opacity: 0;
+    position: relative;
+    width: 100%;
+}
+
+.fade-animation-addedSongs-enter-active{
+    animation: fade-in;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position: relative;
+    width: 100%;
+}
+
+.fade-animation-addedSongs-enter-done{
+    position: relative;
+    opacity: 1;
+    width: 100%;
+}
+
+.fade-animation-addedSongs-exit{
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-animation-addedSongs-exit-active {
+    animation: fade-out;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-animation-addedSongs-exit-done {
+    opacity: 0;
+    position: absolute;
+    display: none;
+    width: 100%;
+}
+
+
+.fade-animation-addedSongs-enter {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-animation-searchContainer-enter-active {
+    animation: fade-in;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-animation-searchContainer-enter-done {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+}
+
+.fade-animation-searchContainer-exit {
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-animation-searchContainer-exit-active {
+    animation: fade-out;
+    animation-duration: 500ms;
+    width: 100%;
+    animation-fill-mode: forwards;
     position: absolute;
 }
 
-.votingroom-musictile-animation-exit-done {
+.fade-animation-searchContainer-exit-done {
+    opacity: 0;
+    width: 100%;
     position: absolute;
     display: none;
 }
@@ -236,3 +361,5 @@
 .votingroom-loading{
     background: var(--color-green)
 }
+
+

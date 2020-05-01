@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 interface props {
-    className?: string
+    className?: string,
 }
 
 export default ({ className }: props) => (

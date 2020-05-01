@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, useHistory } from 'react-router-dom';
 import UUIDGenerator from "shared/utils/UUIDGenerator"
 import HomeScreen from 'features/onboarding/HomeScreen';
 import VotingRoom from 'features/votingRoom/VotingRoom'
 import client from "server/Apollo/Apollo"
 import { ApolloProvider } from '@apollo/react-hooks';
+import Toast from "shared/components/Toast"
 
 const APP_PATHS = {
   HOME_SCREEN: '/',
@@ -29,6 +30,7 @@ const App = () => {
           <Route exact path={APP_PATHS.HOME_SCREEN} component={HomeScreen} />
           <Route path={APP_PATHS.VOTING_ROOM} component={VotingRoom} />
         </BrowserRouter>
+        <Toast />
       </ApolloProvider>
 
     </div>

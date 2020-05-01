@@ -47,7 +47,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   return (
     <div className="home-screen">
       <div className="home-screen_title-container">
-        <h2>
+        <h2 className="home-screen_title-container__font">
           chocolate<span className="home-screen_title_green">.</span>
         </h2>
       </div>
@@ -62,12 +62,20 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           placeholder={"Enter Room ID"}
           errorMessage={error && error.message}
           callback={() => joinRoomCallback(roomInput)}
+          customClassName={"input__placeholder"}
         />
-        <Button callback={() => joinRoomCallback(roomInput)}>
-          <h4 className="buttonText">
-            {loading ? <Loading /> : "Join"}
-          </h4>
-        </Button>
+        <div className="home-screen_buttonContainer">
+          <Button
+            callback={() => joinRoomCallback(roomInput)}
+            className={"btn"}
+            mouseDownClassName={"btn__mousedown"}
+          >
+            <h4 className="buttonText">
+              {loading ? <Loading /> : "Join"}
+            </h4>
+          </Button>
+        </div>
+
       </div>
       <div className="home-screen_create-room-container">
         <h4 className="home-screen_nearby-container-title">

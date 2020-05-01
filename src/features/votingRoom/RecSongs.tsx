@@ -7,13 +7,15 @@ import { useQuery, useSubscription } from "@apollo/react-hooks";
 import { GET_SONG_RECS, GET_ROOM, GET_SONGS } from "server/Apollo/Queries"
 import Refresh from "assets/svgs/Refresh"
 
+// THIS COMPONENT IS DEPRECIATED!!
+
 interface RecSongsProps {
     songToTile: Function
 }
 
 
 const RecSongs: React.FC<RecSongsProps> = ({ songToTile }) => {
-    let { loading, data, error, refetch } = useQuery(GET_SONG_RECS, { variables: { seed: ["dance"] }, notifyOnNetworkStatusChange: true })
+    const { loading, data, error, refetch } = useQuery(GET_SONG_RECS, { variables: { seed: ["dance"] }, notifyOnNetworkStatusChange: true })
     return (
         <React.Fragment>
             <div className="votingroom_titleLabel-container">

@@ -1,30 +1,31 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useLocation } from "react-router-dom"
-import { useLazyQuery } from '@apollo/react-hooks';
-import { Song } from "shared/types"
+import { useQuery } from '@apollo/react-hooks';
+import { Song, SpotifySong } from "shared/types"
 import db from "server/Firestore"
 import AddSong from "assets/svgs/AddSong"
 import Loading from "shared/components/Loading"
-import Input from "shared/components/Input"
-import { GET_SEARCH } from "server/Apollo/Queries"
-import RecSongs from "features/votingRoom/RecSongs"
-
+import Refresh from "assets/svgs/Refresh"
+import { GET_SONG_RECS } from "server/Apollo/Queries"
+import { useApolloClient } from "@apollo/react-hooks";
+import Button from "shared/components/Button"
 interface AddedSongsContainerProps {
     songToTile: Function;
     setIsSearch: Function;
-    setContainerHeight: Function;
 }
 
 const AddedSongsContainer: React.FC<AddedSongsContainerProps> = ({
     songToTile,
     setIsSearch,
-    setContainerHeight
 }) => {
+    const client = useApolloClient()
     const location = useLocation()
     const roomId = location.pathname.split("/").pop()
     const [songs, setSongs] = useState<Song[]>([])
     const measureRef = useRef<HTMLDivElement>(null)
     const [loading, setLoading] = useState<boolean>(true)
+    const { loading: loadingRecs, data: dataRecs, error, refetch } = useQuery(GET_SONG_RECS, { variables: { seed: ["dance"] }, notifyOnNetworkStatusChange: true })
+
 
     const addSongs = (newSongs: Song[]) => {
         newSongs.sort((a, b) => b.score - a.score)
@@ -70,8 +71,11 @@ const AddedSongsContainer: React.FC<AddedSongsContainerProps> = ({
     }, [])
 
     useEffect(() => {
-        const node = measureRef.current!
-        setContainerHeight(node.getBoundingClientRect().height)
+        client.writeData({
+            data: {
+                songs: songs.map((song: Song) => song.trackId)
+            }
+        })
     }, [songs])
 
     return (
@@ -85,20 +89,51 @@ const AddedSongsContainer: React.FC<AddedSongsContainerProps> = ({
                         Double tap to upvote a song!"
                     </h4>
                 </div>
-                <div className="votingroom_addSong-container" onClick={() => setIsSearch(true)}>
+                <Button
+                    className={"votingroom_addSong-container"}
+                    mouseDownClassName={"votingroom_addSong-container_mouseDown"}
+                    callback={() => setIsSearch(true)}
+                >
                     <AddSong />
-                </div>
+                </Button>
             </div>
-
             <div className="votingroom_song-container">
-                {loading &&
+                {
+                    loading &&
                     <div className="votingroom_loading-container">
                         <Loading classNameText={"votingroom-loading"} />
                     </div>
                 }
                 {songToTile({ songs: songs, isRec: false })}
             </div>
-            <RecSongs songToTile={songToTile} />
+
+            <div className="votingroom_titleLabel-container">
+                <div style={{ textAlign: 'left' }}>
+                    <h2 style={{ fontSize: '1.4rem' }}>
+                        Recommended songs
+                    </h2>
+                    <h4 style={{ marginTop: '-1px' }}>
+                        Based on songs in this playlist
+                    </h4>
+                </div>
+                <div className="votingroom_addSong-container" onClick={() => refetch()}>
+                    <Refresh />
+                </div>
+            </div>
+            {loadingRecs ?
+                <div className="votingroom_loading-container"><Loading classNameText={"votingroom-loading"} /></div>
+                :
+                <div className="votingroom_song-container" style={{ minHeight: "700px" }}>
+                    {dataRecs && songToTile({
+                        songs: dataRecs.songRecs.map((song: SpotifySong) => {
+                            return {
+                                trackId: song.id,
+                                song: song
+                            } as Song
+                        }), isRec: true
+                    })}
+                </div>
+            }
         </div>
     )
 }

@@ -5,6 +5,23 @@
   padding: 2rem;;
 }
 
+.home-screen_buttonContainer{
+  display: flex;
+  width: 100%;
+}
+
+.home-screen_join-room-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.home-screen_create-room-text{
+  margin: 1rem 0;
+  text-align: left;
+}
+
+
+
 .home-screen__boxes-container {
   width: 100%;
   display: flex;
@@ -68,7 +85,7 @@
 
 .room-card_container{
   display: inline-flex;
-  width: 33%;
+  width: 135px;
   height: 11rem;
   background-color: grey;
   margin: 1rem 0 1rem 0.7rem;
@@ -96,10 +113,35 @@
 }
 
 .home-screen_create-room-container{
-  margin-top: 2rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 600px) {
+  .home-screen{
+    padding: 2rem 4rem;
+  }
+  .home-screen_buttonContainer{
+    justify-content: flex-start;
+    width: 200px;
+  }
+  .home-screen_join-room-container{
+    align-items: center;
+  }
+  .home-screen_create-room-container{
+    align-items: center;
+  }
+  .home-screen_create-room-text{
+    text-align: center;
+  }
+  .home-screen_title-container__font{
+    font-size: 2.25rem;
+  }
 }
 
-.home-screen_create-room-text{
-  margin: 1rem 0;
-  text-align: left;
+
+@media only screen and (min-width: 768px) {
+  .home-screen{
+    padding: 3rem 10rem;
+  }
 }

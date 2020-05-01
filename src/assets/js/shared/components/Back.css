@@ -1,6 +1,15 @@
 .back{
     margin: 1rem;
-    fill: var(--color-light-green);
+    fill: inherit;
     width: 30px;
     height: 30px;
+    transition: all 0.1s;
+}
+
+.back__mouseUp{
+    fill: var(--color-green)
+}
+
+.back__mouseDown{
+    fill: var(--color-light-green);
 }

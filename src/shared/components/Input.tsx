@@ -32,7 +32,7 @@ const Input: React.FC<InputProps> = ({
     }, [])
 
     return (
-        <div>
+        <div style={{ display: 'flex', flexDirection: "column" }}>
             <input
                 className={`${customClassName} home-screen_join-room-input`}
                 placeholder={placeholder || ""}

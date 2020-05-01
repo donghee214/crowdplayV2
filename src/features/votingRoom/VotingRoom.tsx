@@ -4,9 +4,9 @@ import { Song } from "shared/types"
 import CurrentlyPlaying from "features/votingRoom/CurrentlyPlaying"
 import AddedSongContainer from "features/votingRoom/AddedSongsContainer"
 import SearchSongsContainer from "features/votingRoom/SearchSongsContainer"
-import MusicTile from "shared/components/MusicTile"
+import MusicTile, { TILE_TYPES } from "shared/components/MusicTile"
 import { CSSTransition } from "react-transition-group";
-
+import BrowseSongsContainer from "features/browse/BrowseSongsContainer"
 
 
 interface VotingRoomProps {
@@ -17,20 +17,34 @@ const VotingRoom: React.FC<VotingRoomProps> = () => {
     const location = useLocation()
     const roomId = location.pathname.split("/").pop()
     const [isSearch, setIsSearch] = useState<boolean>(false)
-    const [containerHeight, setContainerHeight] = useState<number>(200)
 
-    const songsRef = useRef<HTMLDivElement>(null)
+    // const songsRef = useRef<HTMLDivElement>(null)
 
     const toggleSearch = (val: boolean) => {
         setIsSearch(val)
-        const node = songsRef.current!
-        node.scrollIntoView({ behavior: "smooth" })
+        // const node = songsRef.current!
+        // SET SCROLL BEHAVIOUR TRUE ON CLASS "votingRoom-container" AS A RESULT FOR SMOOTH SCROLLING
+        // SEE IF THIS EFFECTED NEGATIVELY PERFORMANCE LATER
+        // node.scrollIntoView(true)
     }
 
     const songToTile = ({ songs, isRec }: { songs: Song[], isRec: boolean }) => {
+        if (songs.length === 0) {
+            return (
+                <div className="votingroom-noResultMesaage">
+                    <h2>
+                        No songs here yet!
+                </h2>
+                    <h4 style={{ marginTop: "4px" }}>
+                        Click the green plus to search for tracks to add
+                    </h4>
+                </div>
+            )
+        }
         let nextLargePortrait = 1
         let addition = 10
         return songs.map((song: Song, index: number) => {
+            let large = false
             if (index == nextLargePortrait) {
                 if (addition == 8) {
                     addition = 10
@@ -39,9 +53,19 @@ const VotingRoom: React.FC<VotingRoomProps> = () => {
                     addition = 8
                 }
                 nextLargePortrait += addition
-                return <MusicTile key={song.trackId} song={song.song} large={true} score={song.score} roomId={roomId} />
+                large = true
             }
-            return <MusicTile key={song.trackId} song={song.song} large={false} score={song.score} roomId={roomId} />
+            return (
+                <MusicTile
+                    key={song.trackId}
+                    data={song.song}
+                    large={large}
+                    score={song.score}
+                    voters={song.voters}
+                    roomId={roomId ? roomId : ''}
+                    tileType={isRec ? TILE_TYPES.TRACK : TILE_TYPES.ADDED_TRACK}
+                />
+            )
         })
     }
     return (
@@ -50,35 +74,33 @@ const VotingRoom: React.FC<VotingRoomProps> = () => {
                 roomName={roomId}
             />
             <div className="votingroom_currentlyPlayingBuffer" />
-            <div className="votingroom_addedSongs-container" ref={songsRef} style={{ height: containerHeight + 100 }}>
+            <div className="votingroom_addedSongs-container">
                 <div className="votingroom_addedSong-tab" />
-
                 <CSSTransition
-                    appear={true}
-                    // unmountOnExit={true}
+                    // appear={true}
+                    unmountOnExit={false}
                     in={!isSearch}
-                    timeout={400}
-                    classNames="votingroom-musictile-animation">
+                    timeout={500}
+                    classNames="fade-animation-addedSongs">
                     <AddedSongContainer
                         songToTile={songToTile}
                         setIsSearch={toggleSearch}
-                        setContainerHeight={setContainerHeight}
                     />
-
                 </CSSTransition>
                 <CSSTransition
-                    appear={true}
+                    // appear={true}
+                    // mountOnEnter={true}
                     unmountOnExit={true}
                     in={isSearch}
-                    timeout={400}
-                    classNames="votingroom-musictile-animation">
+                    timeout={500}
+                    classNames="fade-animation-searchContainer">
                     <SearchSongsContainer
                         setIsSearch={toggleSearch}
+                        roomId={roomId ? roomId : ""}
                     />
                 </CSSTransition>
-
             </div>
-
+            <BrowseSongsContainer />
         </div>
     )
 }

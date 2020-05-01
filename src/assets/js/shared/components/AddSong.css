@@ -1,3 +1,14 @@
 .addSong{
+    fill: var(--color-white);
+    width: 32px;
+    height: 32px;
+    transition: 0.5s;
+}
 
+.addSong-rotate{
+    transform: rotate(45deg);
+}
+
+.addSong-no-rotate{
+    transform: rotate(0deg);
 }

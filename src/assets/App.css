@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300, 400,600&display=swap');
 
 /* Import Baseline styles */
 @import url('./shared/colours.css');
@@ -14,10 +14,13 @@
 @import url("./js/shared/components/Loading.css");
 @import url("./js/shared/components/Share.css");
 @import url("./js/shared/components/Back.css");
+@import url("./js/shared/components/Exit.css");
 @import url("./js/shared/components/Refresh.css");
+@import url("./js/shared/components/Toast.css");
 @import url('./js/features/onboarding/homeScreen.css');
 @import url('./js/features/onboarding/CreateJoinRoomScreen.css');
 @import url('./js/features/votingroom/votingRoom.css');
+@import url("./js/features/browsesongs/BrowseSongs.css");
 
 html {
   margin: 0;
@@ -26,12 +29,17 @@ html {
   height: 100%;
   min-width: 100vw;
   background-color: var(--color-white);
+  touch-action: manipulation;
 }
 
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+body::-webkit-scrollbar{
+  display: none;
 }
 
 .App {
@@ -48,10 +56,20 @@ input {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.5rem;
   width: 100%;
+  max-width: 500px;
   background-color: inherit;
   outline: none;
   border: none;
   border-bottom: 2px solid var(--color-light-grey);
   color: var(--color-light-black);
   padding: 0px 0px 8px;
+}
+
+
+
+@media only screen and (min-width: 600px){
+  .input__placeholder{
+    text-align: center;
+    width: 400px;
+  }
 }

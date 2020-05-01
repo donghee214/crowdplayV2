@@ -6,10 +6,10 @@ import db from "server/Firestore"
 
 
 const NearbyRooms = () => {
-    const [rooms, setRooms] = useState()
+    const [rooms, setRooms] = useState<Room[]>([])
     useEffect(() => {
         const unsub = db.firestore().collection("rooms").onSnapshot((snapshot) => {
-            let rooms = snapshot.docs.map((doc) => doc.data())
+            let rooms = snapshot.docs.map((doc): Room => doc.data() as Room)
             setRooms(rooms)
         })
         return () => unsub()
