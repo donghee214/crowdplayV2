@@ -1,9 +1,8 @@
 import { InMemoryCache } from 'apollo-boost';
 import ApolloClient from 'apollo-boost';
 import { TILE_TYPES } from "shared/components/MusicTile"
-const cache = new InMemoryCache({
-    addTypename: false
-})
+
+const cache = new InMemoryCache()
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',

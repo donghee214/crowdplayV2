@@ -86,7 +86,7 @@
 .room-card_container{
   display: inline-flex;
   min-width: 120px;
-  min-height: 165px;
+  min-height: 160px;
   height: 11rem;
   background-color: grey;
   margin: 1rem 0 1rem 0.7rem;

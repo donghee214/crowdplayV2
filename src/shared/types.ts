@@ -1,3 +1,5 @@
+import { User } from "firebase";
+
 export interface Artist {
   external_urls: {
     spotify: string;
@@ -51,7 +53,7 @@ export interface Song {
 }
 
 export interface Room {
-  adminId: string;
+  admin: User;
   name: string;
   id: string;
   currentSong?: Song;

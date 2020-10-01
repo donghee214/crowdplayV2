@@ -9,7 +9,7 @@ const Toast = () => {
     let timeout: any
 
     useEffect(() => {
-        if (!data.toast.message) return
+        if (!data?.toast?.message) return
         if (mount === false) {
             setMount(true)
             timeout = setTimeout(() => { setMount(false) }, 2000)
@@ -24,7 +24,7 @@ const Toast = () => {
         }
         // clear any existing timeouts whenever the value changes
         return () => clearTimeout(timeout)
-    }, [data.toast.id])
+    }, [data?.toast?.id])
 
     return (
         <CSSTransition
@@ -35,7 +35,7 @@ const Toast = () => {
             <div className="toast-container">
                 <div className="toast">
                     <h3 style={{ fontSize: "0.9rem" }}>
-                        {data.toast.message}
+                        {data?.toast?.message}
                     </h3>
                 </div>
             </div>

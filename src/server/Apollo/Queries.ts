@@ -67,7 +67,7 @@ export const GET_ROOM = gql`
     room(id: $id){
       id
       name
-      adminUser{
+      admin{
         id
       }
     }

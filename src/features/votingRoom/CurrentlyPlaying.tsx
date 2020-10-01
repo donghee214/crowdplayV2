@@ -22,7 +22,7 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({ roomName }) => {
         const unsub = db.firestore().doc(`rooms/${roomName}`).onSnapshot((doc) => {
             const room = doc.data() as Room
             setSong(room?.currentSong)
-            setVibrantColour(room?.vibrantColour || [255, 255, 255])
+            setVibrantColour(room?.vibrantColour || [30, 215, 96])
         })
         return () => unsub()
     }, [])
@@ -39,10 +39,6 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({ roomName }) => {
         }
         return (
             <React.Fragment>
-                <div className="votingRoom-background" style={{
-                    backgroundColor: `rgba(${vibrantColour[0]}, ${vibrantColour[1]}, ${vibrantColour[2]}, 0.8)`
-                }} />
-                <div className="votingRoom-background-opacityLayer" />
                 <div style={{ width: "250px" }}>
                     <div className="votingroom_currentlyPlaying-albumCover"
                         style={{
@@ -83,15 +79,16 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({ roomName }) => {
         })
     }
 
-
     return (
         <div className="votingroom_currentlyPlaying-container">
+            <div className="votingRoom-background-opacityLayer" />
+            <div className="votingRoom-background" style={{
+                backgroundColor: `rgba(${vibrantColour[0]}, ${vibrantColour[1]}, ${vibrantColour[2]}, 0.8)`
+            }} />
             <div className="votingroom_currentlyPlaying-roomInfo_container">
                 <Button callback={back} className={"back__mouseUp"} mouseDownClassName={"back__mouseDown"}>
                     <Back />
                 </Button>
-
-
                 <div>
                     <h4 className="votingroom_currentlyPlaying-roomLabel">
                         Roomname:
