@@ -15,7 +15,6 @@ const WithQueueSong = (Component: any) => (props: any) => {
     const [addSong, { data: addSongData, error: addSongDataError }] = useMutation(ADD_SONG)
     const [clicked, setClicked] = useState(false)
 
-
     const queueSong = (data: SpotifySong) => {
         if (clicked) {
             client.writeData({
