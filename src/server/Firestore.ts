@@ -1,13 +1,18 @@
 import firebase from 'firebase'
+import * as dotenv from 'dotenv';
+
+dotenv.config()
 
 const config = {
-  apiKey: "AIzaSyDmUL2-8JiIXvzEzKtFd5LJ3McsEiGp3CA",
-  authDomain: "crowdplayv2.firebaseapp.com",
-  databaseURL: "https://crowdplayv2.firebaseio.com",
-  projectId: "crowdplayv2",
-  storageBucket: "crowdplayv2.appspot.com",
-  messagingSenderId: "357291700440"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID
 };
+
+
 
 firebase.initializeApp(config);
 
