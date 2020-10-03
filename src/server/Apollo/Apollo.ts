@@ -1,11 +1,14 @@
 import { InMemoryCache } from 'apollo-boost';
 import ApolloClient from 'apollo-boost';
 import { TILE_TYPES } from "shared/components/MusicTile"
+import * as dotenv from 'dotenv';
+
+dotenv.config()
 
 const cache = new InMemoryCache()
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
     cache: cache,
     resolvers: {}
 })

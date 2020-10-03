@@ -6,6 +6,13 @@ declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: 'development' | 'production' | 'test';
     PUBLIC_URL: string;
+    REACT_APP_FIREBASE_API_KEY: string;
+    REACT_APP_FIREBASE_AUTH_DOMAIN: string;
+    REACT_APP_FIREBASE_DATABASE_URL: string;
+    REACT_APP_FIREBASE_PROJECT_ID: string;
+    REACT_APP_FIREBASE_STORAGE_BUCKET: string;
+    REACT_APP_FIREBASE_SENDER_ID: string;
+    REACT_APP_GRAPHQL_ENDPOINT: string;
   }
 }
 
@@ -35,8 +42,8 @@ declare module '*.png' {
 }
 
 declare module '*.webp' {
-    const src: string;
-    export default src;
+  const src: string;
+  export default src;
 }
 
 declare module '*.svg' {
