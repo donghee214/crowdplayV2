@@ -108,7 +108,7 @@ const AddedSongsContainer: React.FC<AddedSongsContainerProps> = ({
             </div>
 
             <div className="votingroom_titleLabel-container">
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'left', width: '100%' }}>
                     <h2 style={{ fontSize: '1.4rem' }}>
                         Recommended songs
                     </h2>

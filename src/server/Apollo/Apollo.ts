@@ -5,7 +5,9 @@ import * as dotenv from 'dotenv';
 
 dotenv.config()
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache({
+    addTypename: false
+})
 
 const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,

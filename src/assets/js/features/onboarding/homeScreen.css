@@ -89,18 +89,34 @@
   min-height: 160px;
   height: 11rem;
   background-color: grey;
-  margin: 1rem 0 1rem 0.7rem;
+  margin: 1rem 0 1rem 0.3rem;
   border-radius: 20px;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-start;
-  padding: 0.5rem;
+  padding: 1rem 0.75rem;
   box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.room-card_container:hover{
+  opacity: 0.8;
+}
+
+.room-card_container_subtitle{
+  color: var(--color-off-white);
+  text-align: start;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 .room-card_container_title{
-  padding: 0.5rem;
-  color: white;
+  color: var(--color-white);
+  text-align: start;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.1rem 0;
 }
 
 .home-screen_join-room-input{
@@ -118,6 +134,7 @@
   display: flex;
   flex-direction: column;
 }
+
 @media only screen and (min-width: 600px) {
   .home-screen{
     padding: 2rem 4rem;

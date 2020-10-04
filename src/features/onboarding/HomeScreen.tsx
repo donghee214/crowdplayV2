@@ -51,7 +51,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           chocolate<span className="home-screen_title_green">.</span>
         </h2>
       </div>
-      <NearbyRooms />
+      <NearbyRooms joinRoomCallback={joinRoomCallback} />
       <div className="home-screen_join-room-container">
         <h4 className="home-screen_nearby-container-title">
           Join Room

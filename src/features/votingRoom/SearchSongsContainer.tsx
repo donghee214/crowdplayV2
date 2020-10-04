@@ -148,7 +148,7 @@ const SearchSongsContainer: React.FC<SearchSongsContainerProps> = ({ setIsSearch
     return (
         <div>
             <div className="votingroom_titleLabel-container">
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'left', width: '80%' }}>
                     <Input
                         onChangeCallback={updateSearchTerm}
                         value={searchTerm}

@@ -4,8 +4,11 @@ import { Room } from "shared/types"
 import RoomCard from "features/onboarding/RoomCard"
 import db from "server/Firestore"
 
+interface NearbyRoomsProps {
+    joinRoomCallback: (roomId: string) => Promise<void>;
+}
 
-const NearbyRooms = () => {
+const NearbyRooms: React.FC<NearbyRoomsProps> = ({ joinRoomCallback }) => {
     const [rooms, setRooms] = useState<Room[]>([])
     useEffect(() => {
         const unsub = db.firestore().collection("rooms").onSnapshot((snapshot) => {
@@ -26,6 +29,7 @@ const NearbyRooms = () => {
             <RoomCard
                 key={room.id}
                 color={colors[index % colors.length]}
+                onClick={() => joinRoomCallback(room.id)}
                 {...room} />
         ))
     }

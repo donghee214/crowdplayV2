@@ -70,6 +70,7 @@ const MusicTile = ({ data, large, roomId, score, tileType, voters, clicked, setC
 
   // POSSIBLY MAKE THIS DEPENDENT ON STATE TILE AS OPPOSED TO RECEIVING PROPS? NEED TO FIGURE OUT STALE PROPS ISSUE
   const expandModal = ({ mainText, subText, imageURL, type }: TileProps) => {
+    console.log('called!!', data)
     // expand modal to songs in the playlist, artist, or album
     client.writeData({
       data: {

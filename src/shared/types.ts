@@ -1,4 +1,7 @@
-import { User } from "firebase";
+export interface User {
+  display_name: string;
+  id: string;
+}
 
 export interface Artist {
   external_urls: {
@@ -54,10 +57,11 @@ export interface Song {
 
 export interface Room {
   admin: User;
-  name: string;
   id: string;
   currentSong?: Song;
-  vibrantColour: number[]
+  vibrantColour?: number[];
+  lightVibrantColour?: number[];
+  darkVibrantColour?: number[];
 }
 
 export interface Playlist {

@@ -183,7 +183,7 @@
     align-items: center;
     -webkit-flex-direction: column;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     grid-column: auto/span 3;
     grid-row: auto/span 3;
     padding: 2rem;
