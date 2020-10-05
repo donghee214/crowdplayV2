@@ -92,8 +92,9 @@ const MusicTile = ({ data, large, roomId, score, tileType, voters, clicked, setC
 
   useEffect(() => {
     const getOptimalImage = (arrOfImages: Image[]) => {
-      if (!arrOfImages) return ""
+      if (!arrOfImages || !arrOfImages.length) return ""
       if (large && arrOfImages.length >= 2) {
+        console.log(arrOfImages)
         return arrOfImages.slice(-2)[0].url
       }
       return arrOfImages.slice(-1)[0].url
